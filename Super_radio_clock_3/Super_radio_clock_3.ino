@@ -20,7 +20,10 @@ All text above, and the splash screen must be included in any redistribution
 #include <SD.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
+
+#define SSD1306_128_64 // this is set in the master file... edit it if you want a different size...
 #include <Adafruit_SSD1306.h>
+
 #include <FaBoRTC_PCF2129.h>
 #include <EEPROM.h>
 
@@ -155,7 +158,7 @@ void loop() {
     i2c_write(RADIO,0x0F,0b10001000,0b00010000);
 ///digital volume control enable
     i2c_write(RADIO,0x1D,0b00000000,0b00000100);   
-  listen_freq=83.3;  
+  listen_freq= 97.9; // MOD TO STARTUP ON My Freq... 83.3;
   initial_num=listen_freq*20.0;
   channel_num=initial_num+encorder_val*2;
   s_upper2=(channel_num>>8 | 0b10000000);
@@ -514,7 +517,7 @@ void initial_reception(void){
     i2c_write(RADIO,0x0F,0b10001000,0b00010000);
 ///digital volume control enable
     i2c_write(RADIO,0x1D,0b00000000,0b00000100);   
-  listen_freq=83.3;  
+  listen_freq=97.9; // MOD TO START ON 98 Rock! 83.3;  
   initial_num=listen_freq*20.0;
   channel_num=initial_num+encorder_val*2;
   s_upper2=(channel_num>>8 | 0b10000000);
